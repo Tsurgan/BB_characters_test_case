@@ -27,6 +27,7 @@ class BBAdapter (
 
         holder.itemView.apply {
           tvBBc.text = curChar.name
+            //ivBBc.setImageURI(curChar.img);
         }
     }
 
