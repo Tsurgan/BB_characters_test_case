@@ -3,6 +3,10 @@ package com.example.test_bb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -37,13 +41,29 @@ class MainActivity : AppCompatActivity() {
                         for ((name, value) in response.headers) {
                             println("$name: $value")
 
+                        }
+                        val moshi = Moshi.Builder().build()
+                        //
+                        val listType = Types.newParameterizedType(List::class.java, CharacterBB::class.java)
+                        val adapter: JsonAdapter<List<CharacterBB>> = moshi.adapter(listType)
+                        val result = adapter.fromJson(response.body!!.string())
+                        //
+                        if (result!=null){
                             this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                val char = CharacterBB(name,value)
-                                bbAdapter.addChar(char)
+
+
+                        for(s_char in result){
+                            val char = CharacterBB(s_char.char_id,s_char.name,s_char.birthday,s_char.occupation,s_char.img,s_char.status,s_char.nickname,s_char.appearance,s_char.portrayed,s_char.category,s_char.better_call_saul_appearance)
+                            bbAdapter.addChar(char)
+                                             }
                             })
                         }
+                        //val jsonAdapter = moshi.adapter(CharacterBB::class.java)
+                        //val charinfo = jsonAdapter.fromJson(response.body!!.string())
+                        //println(charinfo.toString())
+                        println(result.toString())
 
-                        println(response.body!!.string())
+                        //println(response.body!!.string())
                     }
                 }
             })
