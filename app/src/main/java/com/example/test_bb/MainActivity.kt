@@ -12,13 +12,18 @@ import okhttp3.*
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
+
+
     private lateinit var bbAdapter: BBAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bbAdapter = BBAdapter(mutableListOf())
+        bbAdapter = BBAdapter(mutableListOf()){position->onListItemClick(position)}
         rvBBc.adapter = bbAdapter
         rvBBc.layoutManager = LinearLayoutManager(this)
+
+
+
 
         val client = OkHttpClient();
 
@@ -82,5 +87,9 @@ class MainActivity : AppCompatActivity() {
 
 
         println("testtest")
+    }
+    private fun onListItemClick(position: Int) {
+        println("testtest111")
+        println(position)
     }
 }

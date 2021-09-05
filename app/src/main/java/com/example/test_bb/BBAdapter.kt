@@ -8,15 +8,17 @@ import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_bb.view.*
 class BBAdapter (
-    private val chars: MutableList<CharacterBB>
+    private val chars: MutableList<CharacterBB>,
+    private val onItemClicked: (position: Int) -> Unit
         ) : RecyclerView.Adapter<BBAdapter.CharBBViewHolder>() {
-    class CharBBViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
+    class CharBBViewHolder (itemView: View,private val onItemClicked: (position: Int) -> Unit) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharBBViewHolder {
        return CharBBViewHolder(
            LayoutInflater.from(parent.context).inflate(
                R.layout.item_bb,parent,false
-           )
+           ),onItemClicked
+
        )
     }
     fun addChar(char: CharacterBB) {
@@ -30,6 +32,7 @@ class BBAdapter (
         holder.itemView.apply {
           tvBBc.text = curChar.name
             Picasso.get().load(curChar.img).transform(CropCircleTransformation()).into(ivBBc)
+            setOnClickListener { onItemClicked(curChar.char_id) }
             //Picasso.get().load(curChar.img).into(ivBBc)
             //ivBBc.setImageURI(curChar.img);
         }
