@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_bb.view.*
 class BBAdapter (
     private val chars: MutableList<CharacterBB>
@@ -27,6 +29,8 @@ class BBAdapter (
 
         holder.itemView.apply {
           tvBBc.text = curChar.name
+            Picasso.get().load(curChar.img).transform(CropCircleTransformation()).into(ivBBc)
+            //Picasso.get().load(curChar.img).into(ivBBc)
             //ivBBc.setImageURI(curChar.img);
         }
     }
