@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -89,7 +89,19 @@ class MainActivity : AppCompatActivity() {
         println("testtest")
     }
     private fun onListItemClick(position: Int) {
-        println("testtest111")
-        println(position)
+
+        val fragment=BlankFragment()
+        val args = Bundle()
+        // Send string data as key value format
+        args.putString("char_id",position.toString())
+        fragment.arguments=args
+        replaceFragment(fragment)
+    }
+    fun AppCompatActivity.replaceFragment(fragment:Fragment){
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.host,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
