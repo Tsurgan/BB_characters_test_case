@@ -3,5 +3,15 @@
     <style name="Widget.Theme.Test_bb.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+
     </style>
+
+    <style name="ToolBarWithNavigationBack">
+        <item name="navigationIcon">@drawable/load</item>
+    </style>
+
+
+
+
+
 </resources>

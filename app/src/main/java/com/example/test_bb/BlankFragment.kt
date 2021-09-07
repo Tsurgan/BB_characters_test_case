@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.moshi.Json
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_blank.*
 import kotlinx.android.synthetic.main.fragment_blank.view.*
 
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -31,7 +33,7 @@ private const val CHAR_ID = "1"
  * create an instance of this fragment.
  */
 class BlankFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var char_id_data: String? = null
     private var char_name:String? = null
     private var char_birthday:String? = null
@@ -48,6 +50,7 @@ class BlankFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
            //char_id = CHAR_ID.toInt()
             println("testtest111")
@@ -55,6 +58,8 @@ class BlankFragment : Fragment() {
 
 
         }
+        //(requireActivity() as AppCompatActivity)?.supportActionBar?.hide()
+
     }
 
     override fun onCreateView(
@@ -122,11 +127,18 @@ class BlankFragment : Fragment() {
             if (char_category=="Breaking Bad, Better Call Saul"){
 
             }
-            v.bback.setOnClickListener { getActivity()?.onBackPressed();  }
+            v.toolbar.setNavigationOnClickListener(){getActivity()?.onBackPressed();}
+
+           // v.bback.setOnClickListener {  }
         }
+
         return v;
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        //(requireActivity() as AppCompatActivity)?.supportActionBar?.show()
+    }
 
     companion object {
         /**
