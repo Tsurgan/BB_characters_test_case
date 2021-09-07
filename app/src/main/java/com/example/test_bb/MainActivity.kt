@@ -89,13 +89,73 @@ class MainActivity : AppCompatActivity() {
         println("testtest")
     }
     private fun onListItemClick(position: Int) {
+        val Url= "https://www.breakingbadapi.com/api/characters/$position";
+        println(Url)
+        val client = OkHttpClient();
+        val request = Request.Builder()
+            .url(Url)
+            .build()
 
-        val fragment=BlankFragment()
-        val args = Bundle()
-        // Send string data as key value format
-        args.putString("char_id",position.toString())
-        fragment.arguments=args
-        replaceFragment(fragment)
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+                    for ((name, value) in response.headers) {
+                        println("$name: $value")
+
+                    }
+                    val moshi = Moshi.Builder().build()
+
+
+                    //
+
+                    val listType = Types.newParameterizedType(List::class.java, CharacterBB::class.java)
+                    val adapter: JsonAdapter<List<CharacterBB>> = moshi.adapter(listType)
+                    val result = adapter.fromJson(response.body!!.string())
+                    //
+                    if (result!=null){
+                        //this@MainActivity.runOnUiThread(java.lang.Runnable {
+                        val fragment=BlankFragment()
+                        val args = Bundle()
+                        // Send string data as key value format
+                        for(s_char in result){
+                            val char = CharacterBB(s_char.char_id,s_char.name,s_char.birthday,s_char.occupation,s_char.img,s_char.status,s_char.nickname,s_char.appearance,s_char.portrayed,s_char.category,s_char.better_call_saul_appearance)
+                            args.putString("char_id_data",position.toString())
+                            args.putString("char_name",char.name)
+                            args.putString("char_birthday",char.birthday)
+                            args.putStringArrayList("char_occupation",ArrayList(char.occupation))
+                            args.putString("char_img",char.img)
+                            args.putString("char_status",char.status)
+                            args.putString("char_nickname",char.nickname)
+                            args.putIntegerArrayList("char_appearance",ArrayList(char.appearance))
+                            args.putString("char_portrayed",char.portrayed)
+                            args.putString("char_category",char.category)
+                            args.putIntegerArrayList("char_better_call_saul_appearance",ArrayList(char.better_call_saul_appearance))
+                        }
+
+                        println(result.toString())
+
+
+
+                        fragment.arguments=args
+                        replaceFragment(fragment)
+
+                        //})
+
+                    }
+
+
+
+
+                }
+            }
+        })
+
     }
     fun AppCompatActivity.replaceFragment(fragment:Fragment){
         val fragmentManager = supportFragmentManager
