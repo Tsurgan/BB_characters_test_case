@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -50,12 +51,7 @@
                 -->
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvname"
-                android:text="Garden Residency II"
-                />
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -70,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:background="#ffe5e5e5"
+        android:background="@color/white"
         android:padding="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
@@ -81,20 +77,38 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/corners"
+            android:orientation="vertical"
+
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/light_blue_900"
+
+
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:theme="@style/TitleLayout"
+                >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:theme="@style/DescriptionFragment"
 
                     android:text="Персонаж" />
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/ContentLayout"
 
+                    android:orientation="vertical"
+
+                    >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,13 +117,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:theme="@style/DescriptionFragment"
                         android:text="Также известен как:" />
 
                     <TextView
                         android:id="@+id/tvnickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:theme="@style/InputFragment"
                         android:text="Персонаж" />
                 </LinearLayout>
 
@@ -121,69 +136,78 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:theme="@style/DescriptionFragment"
                         android:text="Дата рождения:" />
 
                     <TextView
                         android:id="@+id/tvbirthday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:theme="@style/InputFragment"
                         android:text="Персонаж" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        android:text="Статус:" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Статус:"
+                            android:theme="@style/DescriptionFragment" />
 
-                    <TextView
-                        android:id="@+id/tvstatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Персонаж" />
+                        <TextView
+                            android:id="@+id/tvstatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Персонаж"
+                            android:theme="@style/InputFragment" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/teal_200"
+
+                android:background="@drawable/corners_1"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_margin="10dp"
+                android:theme="@style/ContentLayout">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text="Род деятельности:" />
+                    android:layout_gravity="center"
+                    android:text="Род деятельности:"
+                    android:theme="@style/DescriptionFragment" />
 
                 <TextView
                     android:id="@+id/tvoccupation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Персонаж" />
+                    android:layout_gravity="center"
+                    android:text="Персонаж"
+                    android:theme="@style/InputFragment" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/ContentLayout"
+                android:gravity="center"
                 android:layout_margin="10dp"
-                android:background="@color/light_blue_900"
+                android:background="@drawable/corners"
                 android:orientation="vertical"
-                android:padding="10dp">
+               >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:theme="@style/DescriptionFragment"
                     android:text="Появление:" />
 
 
@@ -191,12 +215,14 @@
                     android:id="@+id/tvcbb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="тайтлbb" />
+                    android:theme="@style/InputFragment"
+                    android:text="Breaking Bad" />
 
                 <TextView
                     android:id="@+id/tvabb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/InputFragment"
                     android:text="appearancesbb" />
 
 
@@ -204,13 +230,15 @@
                     android:id="@+id/tvcbcs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="тайтлbcs" />
+                    android:theme="@style/InputFragment"
+                    android:text="Better Call Saul" />
 
                 <TextView
                     android:id="@+id/tvabcs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="тайтлbcs" />
+                    android:theme="@style/InputFragment"
+                    android:text="appearancesbcs" />
 
 
             </LinearLayout>
@@ -218,30 +246,35 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/teal_700"
+                android:gravity="center"
+                android:background="@drawable/corners_2"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_margin="10dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:theme="@style/TitleLayout"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:theme="@style/DescriptionFragment"
                         android:text="Актер:" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvportrayed"
+                        android:theme="@style/InputFragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Персонаж" />
@@ -250,11 +283,11 @@
 
                 <ImageView
                     android:id="@+id/ivimg"
-                    android:layout_width="80dp"
-
-                    android:layout_height="match_parent"
+                    android:layout_width="120dp"
+                    android:textColor="@color/black"
+                    android:layout_height="120dp"
                     android:contentDescription="image"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:src="@drawable/load"
 
 
