@@ -8,6 +8,13 @@
     android:background="@android:color/white"
     >
 
+    <Button
+        android:layout_width="53dp"
+        android:id="@+id/bback"
+        android:layout_height="wrap_content">
+
+    </Button>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"

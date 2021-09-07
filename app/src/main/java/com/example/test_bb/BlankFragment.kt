@@ -122,6 +122,7 @@ class BlankFragment : Fragment() {
             if (char_category=="Breaking Bad, Better Call Saul"){
 
             }
+            v.bback.setOnClickListener { getActivity()?.onBackPressed();  }
         }
         return v;
     }
@@ -136,7 +137,7 @@ class BlankFragment : Fragment() {
 
          * @return A new instance of fragment BlankFragment.
          */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(char_id: String) =
             BlankFragment().apply {
