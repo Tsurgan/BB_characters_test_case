@@ -33,8 +33,7 @@ class BBAdapter (
           tvBBc.text = curChar.name
             Picasso.get().load(curChar.img).transform(CropCircleTransformation()).into(ivBBc)
             setOnClickListener { onItemClicked(curChar.char_id) }
-            //Picasso.get().load(curChar.img).into(ivBBc)
-            //ivBBc.setImageURI(curChar.img);
+
         }
     }
 

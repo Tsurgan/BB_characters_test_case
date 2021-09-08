@@ -6,13 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import com.google.android.material.snackbar.Snackbar;
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
+
 import kotlinx.android.synthetic.main.fragment_blank.*
 import kotlinx.android.synthetic.main.fragment_blank.view.*
 
@@ -57,13 +51,12 @@ class BlankFragment : Fragment() {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity)?.supportActionBar?.hide()
         arguments?.let {
-           //char_id = CHAR_ID.toInt()
-            println("testtest111")
-            println(char_id_data)
+
+
 
 
         }
-        //(requireActivity() as AppCompatActivity)?.supportActionBar?.hide()
+
 
     }
 
@@ -78,8 +71,7 @@ class BlankFragment : Fragment() {
 
         char_id_data = arguments?.getString("char_id_data")
         char_id_data?.let {
-            println("testtest222")
-            println(char_id_data)
+
         }
         char_name=arguments?.getString("char_name")
         char_name?.let {

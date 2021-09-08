@@ -67,12 +67,7 @@ class MainActivity : AppCompatActivity() {
                                              }
                             })
                         }
-                        //val jsonAdapter = moshi.adapter(CharacterBB::class.java)
-                        //val charinfo = jsonAdapter.fromJson(response.body!!.string())
-                        //println(charinfo.toString())
-                        println(result.toString())
 
-                        //println(response.body!!.string())
                     }
                 }
             })
@@ -83,18 +78,17 @@ class MainActivity : AppCompatActivity() {
 
         run();
 
-        // val char = CharacterBB(name,value)
-        //bbAdapter.addChar(char)
 
 
 
 
 
-        println("testtest")
+
+
     }
     private fun onListItemClick(position: Int) {
         val Url= "https://www.breakingbadapi.com/api/characters/$position";
-        println(Url)
+
         val client = OkHttpClient();
         val request = Request.Builder()
             .url(Url)
@@ -109,10 +103,7 @@ class MainActivity : AppCompatActivity() {
                 response.use {
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-                    for ((name, value) in response.headers) {
-                        println("$name: $value")
 
-                    }
                     val moshi = Moshi.Builder().build()
 
 
@@ -123,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                     val result = adapter.fromJson(response.body!!.string())
                     //
                     if (result!=null){
-                        //this@MainActivity.runOnUiThread(java.lang.Runnable {
+
                         val fragment=BlankFragment()
                         val args = Bundle()
                         // Send string data as key value format
@@ -149,7 +140,7 @@ class MainActivity : AppCompatActivity() {
                         fragment.arguments=args
                         replaceFragment(fragment)
 
-                        //})
+
 
                     }
 
